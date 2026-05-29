@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/kegelmeier/saphir_x_ha/main/custom_components/saphir_x/brand/logo.png" alt="Saphir X" width="180">
+<img src="https://raw.githubusercontent.com/kegelmeier/ha-saphir-ultra-x/main/custom_components/saphir_x/brand/logo.png" alt="Saphir X" width="180">
 
 # Saphir X Pool
 
@@ -53,7 +53,7 @@ official operating manual (see [`PROTOCOL.md`](PROTOCOL.md)).
    [![Open in HACS][hacs-repo-badge]][hacs-repo]
 
    …or in HACS go to **⋮ → Custom repositories**, paste
-   `https://github.com/kegelmeier/saphir_x_ha`, choose **Integration**, and add it.
+   `https://github.com/kegelmeier/ha-saphir-ultra-x`, choose **Integration**, and add it.
 3. Search for **Saphir X Pool**, install, and **restart Home Assistant**.
 
 ### Manual
@@ -104,12 +104,12 @@ Released under the [MIT License](LICENSE).
 <!-- badges -->
 [hacs]: https://hacs.xyz
 [hacs-shield]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge
-[releases]: https://github.com/kegelmeier/saphir_x_ha/releases
-[release-shield]: https://img.shields.io/github/v/release/kegelmeier/saphir_x_ha?style=for-the-badge
-[license]: https://github.com/kegelmeier/saphir_x_ha/blob/main/LICENSE
-[license-shield]: https://img.shields.io/github/license/kegelmeier/saphir_x_ha?style=for-the-badge
+[releases]: https://github.com/kegelmeier/ha-saphir-ultra-x/releases
+[release-shield]: https://img.shields.io/github/v/release/kegelmeier/ha-saphir-ultra-x?style=for-the-badge
+[license]: https://github.com/kegelmeier/ha-saphir-ultra-x/blob/main/LICENSE
+[license-shield]: https://img.shields.io/github/license/kegelmeier/ha-saphir-ultra-x?style=for-the-badge
 [ha-shield]: https://img.shields.io/badge/Home%20Assistant-2024.8%2B-41BDF5.svg?style=for-the-badge&logo=home-assistant&logoColor=white
-[hacs-repo]: https://my.home-assistant.io/redirect/hacs_repository/?owner=kegelmeier&repository=saphir_x_ha&category=integration
+[hacs-repo]: https://my.home-assistant.io/redirect/hacs_repository/?owner=kegelmeier&repository=ha-saphir-ultra-x&category=integration
 [hacs-repo-badge]: https://my.home-assistant.io/badges/hacs_repository.svg
 [config-flow]: https://my.home-assistant.io/redirect/config_flow_start/?domain=saphir_x
 [config-flow-badge]: https://my.home-assistant.io/badges/config_flow_start.svg
