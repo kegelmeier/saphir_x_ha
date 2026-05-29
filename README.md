@@ -1,60 +1,115 @@
-# Saphir X Pool — Home Assistant Integration
+<div align="center">
 
-Local-polling Home Assistant integration for **SAPHIR Wassertechnologie**
-*Saphir Ultra X* pool controllers, talking directly to the controller over its
-local TCP protocol (port 8888). No cloud dependency.
+<img src="https://raw.githubusercontent.com/kegelmeier/saphir_x_ha/main/custom_components/saphir_x/brand/logo.png" alt="Saphir X" width="180">
 
-The protocol is undocumented publicly; it was reverse-engineered from a live
-packet capture and confirmed against the official operating manual. Full details
-are in [PROTOCOL.md](PROTOCOL.md).
+# Saphir X Pool
 
-## Features
+Local, **cloud-free** Home Assistant integration for
+**SAPHIR Wassertechnologie** _Saphir Ultra X_ pool controllers.
+
+[![HACS Custom][hacs-shield]][hacs]
+[![GitHub Release][release-shield]][releases]
+[![License][license-shield]][license]
+![HA Min Version][ha-shield]
+
+[![Open in HACS][hacs-repo-badge]][hacs-repo]
+
+</div>
+
+Talks directly to the controller over its local TCP protocol (port `8888`) — no
+account, no cloud, no internet required. The protocol is not publicly documented;
+it was reverse-engineered from a live packet capture and verified against the
+official operating manual (see [`PROTOCOL.md`](PROTOCOL.md)).
+
+> [!WARNING]
+> Write entities actuate **real pool hardware and dosing setpoints**. The cover
+> open/close commands were verified on real hardware; other writes follow the
+> documented command set. Test each control once before relying on it in
+> automations.
+
+## ✨ Features
 
 **Sensors (read-only)**
 - Water temperature, pH
-- Redox/ORP, chlorine, H₂O₂ (shown only if the sensor is installed)
+- Redox/ORP, chlorine, H₂O₂ _(shown only if the sensor is installed)_
 - Tank fill levels: pH, chlorine, H₂O₂, copper
-- Electrode current/voltage (disabled by default)
-- Fault code (enum, with all documented error states)
-- Serial number, software version (diagnostic)
+- Electrode current / voltage _(disabled by default)_
+- Fault code _(enum, all documented error states)_
+- Serial number & software version _(diagnostic)_
 
 **Controls (write)**
-- **Cover** — open/close (Rollo) as a `cover` entity
-- **Switches** — light, massage, counter-current (optimistic relay toggles); sleep mode
+- **Cover** — open/close the pool cover (Rollo)
+- **Switches** — light, massage, counter-current (optimistic toggles); sleep mode
 - **Numbers** — pH / chlorine / redox / temperature setpoints, chlorine & H₂O₂ boost
 - **Buttons** — start backwash, acknowledge fault
 
-> ⚠️ Write entities actuate real pool hardware and dosing setpoints. The cover
-> open/close commands were verified on real hardware; other writes follow the
-> documented command set. Use with care.
+## 📦 Installation
 
-## Installation
+### HACS (recommended)
 
-1. Copy `custom_components/saphir_x/` into your Home Assistant `config/custom_components/` directory.
+1. Make sure [HACS](https://hacs.xyz) is installed.
+2. Add this repository as a **custom repository** (category **Integration**):
+
+   [![Open in HACS][hacs-repo-badge]][hacs-repo]
+
+   …or in HACS go to **⋮ → Custom repositories**, paste
+   `https://github.com/kegelmeier/saphir_x_ha`, choose **Integration**, and add it.
+3. Search for **Saphir X Pool**, install, and **restart Home Assistant**.
+
+### Manual
+
+1. Copy `custom_components/saphir_x/` into your `config/custom_components/` directory.
 2. Restart Home Assistant.
-3. **Settings → Devices & Services → Add Integration → "Saphir X Pool"**.
-4. Enter:
-   - **Host / IP** — the controller's local IP (e.g. `192.168.1.50`)
-   - **Port** — `8888`
-   - **Device code** — your Saphir code (numeric, e.g. `12345`)
-   - **Password** — your Saphir password (numeric)
+
+## ⚙️ Configuration
+
+After installing, add the integration:
+
+[![Add Integration][config-flow-badge]][config-flow]
+
+…or go to **Settings → Devices & Services → Add Integration → “Saphir X Pool”**, then enter:
+
+| Field | Example | Notes |
+|-------|---------|-------|
+| **Host / IP** | `192.168.1.50` | The controller's local IP address |
+| **Port** | `8888` | Default |
+| **Device code** | `12345` | Your Saphir code (numeric) |
+| **Password** | — | Your Saphir password (numeric) |
 
 The integration polls every 30 seconds over a single short-lived TCP connection
 (the controller allows one local session at a time).
 
-## Notes / limitations
+## 📝 Notes & limitations
 
-- Relay toggle switches (light/massage/counter-current) are **optimistic** — the
-  controller does not report their on/off state, so Home Assistant assumes state
-  after a command.
-- Sensors that read the "not installed" sentinel (`9999`) are reported as
-  unavailable rather than showing a bogus value.
-- The cover is assumed-state (no position feedback from the hardware).
+- Relay toggle switches (light / massage / counter-current) are **optimistic** —
+  the controller doesn't report their on/off state, so Home Assistant assumes the
+  state after a command.
+- Sensors reading the “not installed” sentinel (`9999`) are reported as
+  **unavailable** rather than showing a bogus value.
+- The cover is **assumed-state** (no position feedback from the hardware).
+- Brand icon/logo are bundled and served via the Home Assistant brands proxy API
+  (requires **Home Assistant 2026.3+**).
 
-## Project layout
+## ⚠️ Disclaimer
 
-```
-custom_components/saphir_x/   the integration
-PROTOCOL.md                   reverse-engineered protocol spec
-_re/                          research artifacts (pcaps, decompile, client, analyzers)
-```
+This is an unofficial, community-built integration. It is **not affiliated with,
+endorsed by, or supported by SAPHIR Wassertechnologie GmbH**. “Saphir” is a
+trademark of its respective owner. Use at your own risk; the author accepts no
+liability for damage to equipment, pools, or water chemistry.
+
+## 📄 License
+
+Released under the [MIT License](LICENSE).
+
+<!-- badges -->
+[hacs]: https://hacs.xyz
+[hacs-shield]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge
+[releases]: https://github.com/kegelmeier/saphir_x_ha/releases
+[release-shield]: https://img.shields.io/github/v/release/kegelmeier/saphir_x_ha?style=for-the-badge
+[license]: https://github.com/kegelmeier/saphir_x_ha/blob/main/LICENSE
+[license-shield]: https://img.shields.io/github/license/kegelmeier/saphir_x_ha?style=for-the-badge
+[ha-shield]: https://img.shields.io/badge/Home%20Assistant-2024.8%2B-41BDF5.svg?style=for-the-badge&logo=home-assistant&logoColor=white
+[hacs-repo]: https://my.home-assistant.io/redirect/hacs_repository/?owner=kegelmeier&repository=saphir_x_ha&category=integration
+[hacs-repo-badge]: https://my.home-assistant.io/badges/hacs_repository.svg
+[config-flow]: https://my.home-assistant.io/redirect/config_flow_start/?domain=saphir_x
+[config-flow-badge]: https://my.home-assistant.io/badges/config_flow_start.svg
