@@ -1,0 +1,87 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Saphir X Pool",
+        "description": "Enter the local connection details for your Saphir Ultra X controller.",
+        "data": {
+          "host": "Host / IP address",
+          "port": "Port",
+          "username": "Device code",
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the controller.",
+      "invalid_auth": "The device code or password was rejected."
+    },
+    "abort": {
+      "already_configured": "This controller is already configured."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "water_temperature": { "name": "Water temperature" },
+      "ph": { "name": "pH" },
+      "redox": { "name": "Redox (ORP)" },
+      "chlorine": { "name": "Chlorine" },
+      "h2o2": { "name": "Hydrogen peroxide" },
+      "current": { "name": "Electrode current" },
+      "voltage": { "name": "Electrode voltage" },
+      "fill_cu": { "name": "Copper tank level" },
+      "fill_ph": { "name": "pH tank level" },
+      "fill_h2o2": { "name": "H2O2 tank level" },
+      "fill_cl": { "name": "Chlorine tank level" },
+      "serial_number": { "name": "Serial number" },
+      "fault": {
+        "name": "Fault",
+        "state": {
+          "ok": "OK",
+          "rtc_clk": "RTC clock error",
+          "parameter": "Parameter error",
+          "no_timeset": "Time not set",
+          "ph_out_of_range": "pH out of range",
+          "cu_empty": "Copper empty",
+          "ph_empty": "pH tank empty",
+          "h2o2_empty": "H2O2 tank empty",
+          "cu_per_day": "Copper daily amount not reached",
+          "cl_out_of_range_high": "Chlorine high limit",
+          "cl_injection_limit": "Chlorine injection limit",
+          "cl_empty": "Chlorine tank empty",
+          "flow": "No flow",
+          "cl_out_of_range_low": "Chlorine low limit",
+          "redox_high": "Redox high",
+          "h2o2_out_of_range_high": "H2O2 high limit",
+          "h2o2_injection_limit": "H2O2 injection limit",
+          "h2o2_sensor": "H2O2 sensor error",
+          "can_transmit": "CAN bus error",
+          "low_water_level": "Low water level",
+          "backfeed": "Backfeed timeout",
+          "unknown": "Unknown error"
+        }
+      }
+    },
+    "number": {
+      "ph_setpoint": { "name": "pH setpoint" },
+      "cl_setpoint": { "name": "Chlorine setpoint" },
+      "redox_target": { "name": "Redox target" },
+      "temperature_setpoint": { "name": "Temperature setpoint" },
+      "cl_boost": { "name": "Chlorine boost" },
+      "h2o2_boost": { "name": "H2O2 boost" }
+    },
+    "switch": {
+      "light": { "name": "Light" },
+      "massage": { "name": "Massage" },
+      "counter_current": { "name": "Counter-current" },
+      "sleepmode": { "name": "Sleep mode" }
+    },
+    "cover": {
+      "cover": { "name": "Pool cover" }
+    },
+    "button": {
+      "backwash": { "name": "Start backwash" },
+      "quit_error": { "name": "Acknowledge fault" }
+    }
+  }
+}

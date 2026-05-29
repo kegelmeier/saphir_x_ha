@@ -1,0 +1,12 @@
+# Reverse-engineering research artifacts — not for publication
+# (contains packet captures, decompiled app, credentials, the vendor manual)
+_re/
+*.apk
+*.pdf
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
